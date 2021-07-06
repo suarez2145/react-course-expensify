@@ -1,0 +1,28 @@
+// rem 
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: $m-size;
+
+
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+// using :disabled subclass to to let browser know how to style the button when it is disabled 
+button:disabled {
+    cursor: default;
+}
+
+.is-active {
+    font-weight: bold;
+}
