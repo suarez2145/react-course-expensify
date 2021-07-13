@@ -7,7 +7,7 @@ import { AddExpense } from '../actions/expenses';
 
 export class AddExpensePage extends React.Component {
     onSubmit = (expense) => {
-        this.props.addExpense(expense);
+        this.props.AddExpense(expense);
                         // this 'push' method reroutes me back to whatever string route i provide (here i am redirecting to dashboard after submit)
         this.props.history.push('/');
 
@@ -26,7 +26,7 @@ export class AddExpensePage extends React.Component {
 
 
 const mapDispatchToProps = (dispatch) => ({
-    addExpense: (expense) => dispatch(addExpense(expense))
+    AddExpense: (expense) => dispatch(AddExpense(expense))
 });
 
 export default connect(undefined, mapDispatchToProps)(AddExpensePage)
