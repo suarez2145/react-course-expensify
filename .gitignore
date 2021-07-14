@@ -1,5 +1,2 @@
 node_modules
-public/budle.js
-public/budle.js.map
-public/styles.css
-public/styles.css.map
+public/dist/
