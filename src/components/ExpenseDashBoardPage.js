@@ -1,5 +1,6 @@
 import React from 'react';
 import ExpenseList from './ExpenseList';
+import ExpensesSummary from './ExpensesSummary';
 
 
 // this 'connect' named export function us provided by react-redux and it allows 
@@ -10,6 +11,7 @@ import ExpenseListFilters from './ExpenseListFilters';
 
 const ExpenseDashboard = () => (
     <div>
+        <ExpensesSummary />
         <ExpenseListFilters />
         <ExpenseList/>
     </div>
