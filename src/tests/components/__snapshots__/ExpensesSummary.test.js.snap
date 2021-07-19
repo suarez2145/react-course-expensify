@@ -2,24 +2,28 @@
 
 exports[`should render ExpensesSummary on DashBoardPage with a SINGLE expense 1`] = `
 <div>
-  <p>
-     Viewing 
-    1
-     expense Totaling 
-    $0.00
-     
-  </p>
+  <h2>
+    <p>
+       Viewing 
+      1
+       expense Totaling 
+      $0.00
+       
+    </p>
+  </h2>
 </div>
 `;
 
 exports[`should render ExpensesSummary on DashBoardPage with multiple expenses 1`] = `
 <div>
-  <p>
-     Viewing 
-    3
-     expenses Totaling 
-    $0.00
-     
-  </p>
+  <h2>
+    <p>
+       Viewing 
+      3
+       expenses Totaling 
+      $0.00
+       
+    </p>
+  </h2>
 </div>
 `;
