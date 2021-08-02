@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux'; 
 import  ExpenseForm  from './ExpenseForm';
-import { AddExpense } from '../actions/expenses';
+import { startAddExpense } from '../actions/expenses';
 
 
 
 export class AddExpensePage extends React.Component {
     onSubmit = (expense) => {
-        this.props.AddExpense(expense);
+        this.props.startAddExpense(expense);
                         // this 'push' method reroutes me back to whatever string route i provide (here i am redirecting to dashboard after submit)
         this.props.history.push('/');
 
@@ -26,7 +26,7 @@ export class AddExpensePage extends React.Component {
 
 
 const mapDispatchToProps = (dispatch) => ({
-    AddExpense: (expense) => dispatch(AddExpense(expense))
+    startAddExpense: (expense) => dispatch(startAddExpense(expense))
 });
 
 export default connect(undefined, mapDispatchToProps)(AddExpensePage)

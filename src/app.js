@@ -29,6 +29,9 @@ import getVisibleExpenses from './selectors/expenses';
 
 import 'react-dates/lib/css/_datepicker.css'
 
+import './firebase/firebase';
+
+
 
 
 

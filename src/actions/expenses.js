@@ -1,21 +1,35 @@
 import uuid from 'uuid';
-
+import database from '../firebase/firebase';
 
 
 
 
 // ADD_EXPENSE action function
 
-export const AddExpense = ({description = '', note = '', amount = 0, createdAt = 0} = {}) => ({
+// this action function is now getting its data from the stratAddExpense function below 
+export const AddExpense = (expense) => ({
     type: 'ADD_EXPENSE',
-    expense: {
-        id: uuid(),
-        description,
-        note,
-        amount,
-        createdAt
-    }
+    expense
 })
+
+
+export const startAddExpense = (expenseData = {}) => {
+    return (dispatch) => {
+        const {
+            description = '', 
+            note = '', 
+            amount = 0, 
+            createdAt = 0
+        } = expenseData;
+        const expense = {description, note, amount, createdAt};
+        return database.ref('expenses').push(expense).then((ref) => {
+            dispatch(AddExpense({
+                id: ref.key,
+                ...expense
+            }))
+        });
+    }
+}
 
 // REMOVE_EXPENSE action function
 
