@@ -23,7 +23,7 @@ import configureStore from './store/configureStore';
 
 import {setText} from './actions/filters';
 
-import {AddExpense} from './actions/expenses';
+import {startSetExpenses} from './actions/expenses';
 
 import getVisibleExpenses from './selectors/expenses';
 
@@ -61,4 +61,13 @@ const jsx = (
 
     // since we are nesting all our components into the IndecisionApp component we enter it below exactly like we would in a 
     // const variable for our jsx but now inline with what we want rendered.
-ReactDOM.render(jsx, document.getElementById('app'))
+
+// here i am rendering a p tag with the loading word on the screen waiting for the startSetExpenses to finish and render below
+ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
+
+// here i am making a call to my store for the startSetExpenses action geerator (function) once the action gets all the data from the database it will render to the screen 
+store.dispatch(startSetExpenses()).then(() => {
+    ReactDOM.render(jsx, document.getElementById('app'))
+})
+
+

@@ -1,6 +1,6 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { AddExpense, editExpense, removeExpense, startAddExpense } from '../../actions/expenses';
+import { AddExpense, editExpense, removeExpense, startAddExpense, setExpenses, startSetExpenses } from '../../actions/expenses';
 import expenses from '../fixtures/expenses';
 import database from '../../firebase/firebase';
 
@@ -8,6 +8,18 @@ import database from '../../firebase/firebase';
 
 const createMockStore = configureMockStore([thunk]);
 // jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+
+
+beforeEach((done) => {
+    const expensesData = {};
+    // here we are usng the forEach method to loop through all our expenses data from fixtures and set it into the new expensesData object
+    // to then set it into our  firebase database
+    expenses.forEach(({ id, description, note, amount, createdAt}) => {
+        expensesData[id] = { description, note, amount, createdAt };
+    });
+    database.ref('expenses').set(expensesData).then(() => done());
+})
+
 
 
 test('should set up remove expense action object', () => {
@@ -101,6 +113,29 @@ test('should add expense with defaults to database and store', (done) => {
     });
 
 });
+
+test(' should setup set expenses action to object with date', () => {
+    const action = setExpenses(expenses);
+    expect(action).toEqual({
+        type: 'SET_EXPENSES',
+        expenses
+    })
+})
+
+test('should fetch the expenses from the database', (done) => {
+    const store = createMockStore({});
+    store.dispatch(startSetExpenses()).then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type: 'SET_EXPENSES',
+            expenses
+        })
+        done();
+    })
+
+
+
+})
 
 // test('should set up addExpense action object with defaults', () => {
 //     const expenseData = {
