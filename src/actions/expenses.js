@@ -38,6 +38,17 @@ export const removeExpense = ({id} = {}) => ({
     id
 })
 
+export const startRemoveExpense = ({id} = {}) => {
+    return (dispatch) => {
+        // here i am referencing the specific expense id that is being passed into startRemoveExpense as an argument ( this is the expense that the user wants to delete)
+        // this is the call to our datbase that is actually removing the item from our database
+        return database.ref(`expenses/${id}`).remove().then(() => {
+            // here we are just dispatching/ calling the removeExpense action above with the id  
+            dispatch(removeExpense({ id }))
+        })
+    }
+}
+
 // EDIT_EXPENSE action function
 
 export const editExpense = (id, updates) => ({
