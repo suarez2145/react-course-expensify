@@ -55,7 +55,20 @@ export const editExpense = (id, updates) => ({
     type: 'EDIT_EXPENSE',
     id,
     updates
-})
+});
+
+// this action is to start the editExpense to the firebase database first and then we use DISPATCH to call our editExpense action function the our store
+export const startEditExpense = (id, updates) => {
+    return (dispatch) => {
+        // here we are using the .ref to firebase function to reference the expense with the id passed to us by the button clicked by user
+        // then we use the .update firebase function to pass the updates to the function and then chain the editExpense call to our store
+        return database.ref(`expenses/${id}`).update(updates).then(() => {
+            // this dispatch is what calls the editExpense action function to our redux store
+            dispatch(editExpense(id, updates))
+        })
+        
+    }
+}
 
 // SET_EXPENSES
 export const setExpenses = (expenses) => ({
