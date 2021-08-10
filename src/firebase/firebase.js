@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 
 
 
+
 var firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
@@ -20,7 +21,9 @@ firebase.initializeApp(firebaseConfig);
 // i dont think we can write to the database with .set() in the newer firebase version " it keeps giving me an error"
 const database = firebase.database();
 
-export { firebase, database as default};
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+
+export { firebase,googleAuthProvider, database as default};
 
 
 // database.ref('expenses')
