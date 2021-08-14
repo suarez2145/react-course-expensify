@@ -8,8 +8,8 @@ import { startAddExpense } from '../actions/expenses';
 export class AddExpensePage extends React.Component {
     onSubmit = (expense) => {
         this.props.startAddExpense(expense);
-                        // this 'push' method reroutes me back to whatever string route i provide (here i am redirecting to dashboard after submit)
-        this.props.history.push('/');
+        // this 'push' method reroutes me back to whatever string route i provide (here i am redirecting to dashboard after submit)
+        this.props.history.push('/dashboard');
 
     }
 
