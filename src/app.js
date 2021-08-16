@@ -33,6 +33,8 @@ import 'react-dates/lib/css/_datepicker.css'
 
 import { firebase } from './firebase/firebase';
 
+import LoadingPage from './components/LoadingPage'
+
 
 
 
@@ -74,7 +76,7 @@ const renderApp = () => {
     // const variable for our jsx but now inline with what we want rendered.
 
 // here i am rendering a p tag with the loading word on the screen waiting for the startSetExpenses to finish and render below
-ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
+ReactDOM.render(<LoadingPage />, document.getElementById('app'))
 
 
 

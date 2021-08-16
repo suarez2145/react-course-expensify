@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import selectExpensesTotal from '../selectors/expenses-total';
 import getVisibleExpenses from '../selectors/expenses';
 import numeral from 'numeral';
+import { Link } from 'react-router-dom';
 
 
 
@@ -10,14 +11,19 @@ export const ExpensesSummary = (props) => {
 
     return (
         
-        <div>
-            <h2>
-            {
-                
+        <div className="page-header">
+            <div className="content-container">
+                <h1 className="page-header__title">
+                {
                 // Here i use the ternary operator to conditionally render the paragraph with number of expenses im viewing and the total 
-                props.expenses.length > 1 || props.expenses.length === 0  ? ( <p> Viewing {props.expenses.length} expenses Totaling {numeral(props.expensesTotal / 100).format('$0,0.00') } </p> )  : ( <p> Viewing {props.expenses.length} expense Totaling {numeral(props.expensesTotal / 100).format('$0,0.00') } </p> ) 
-            }
-            </h2>
+                props.expenses.length > 1 || props.expenses.length === 0  ? ( <p> Viewing <span>{props.expenses.length}</span> expenses Totaling <span>{numeral(props.expensesTotal / 100).format('$0,0.00') } </span> </p> )  : ( <p> Viewing <span>{props.expenses.length}</span> expense Totaling <span>{numeral(props.expensesTotal / 100).format('$0,0.00') } </span> </p> ) 
+                }
+                </h1>
+                <div className="page-header__actions">
+                    <Link className="button" to="/create"> Add Expense</Link>
+                </div>
+            </div>
+
         </div>
     )
 

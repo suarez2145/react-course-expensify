@@ -15,11 +15,19 @@ export class AddExpensePage extends React.Component {
 
     render() {
         return (
+
             <div>
-            <h1>Add Expense</h1>
-            {/*  here we are using the data we get from ExpenseForm.js and then we pass that info into AddExpense which we get from another file location */}
-            <ExpenseForm onSubmit={ this.onSubmit }/>
-        </div>
+                <div className="page-header">
+                    <div className="content-container">
+                        <h1 className="page-header__title">Add Expense</h1>
+                    </div>
+
+                </div>
+                <div className="content-container">
+                {/*  here we are using the data we get from ExpenseForm.js and then we pass that info into AddExpense which we get from another file location */}
+                <ExpenseForm onSubmit={ this.onSubmit }/>
+                </div>
+            </div>
         )
     }
 }

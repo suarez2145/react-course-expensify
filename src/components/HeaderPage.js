@@ -1,19 +1,23 @@
 import React from 'react';
 
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 // using connect to connect our componets below to redux store
 import { connect } from 'react-redux';
 import { startLogout } from '../actions/auth';
 
 // here we pass in our startLogout prop defined in our mapDispatchToProps function so we can pass it to our button
 const Header = ({ startLogout }) => (
-    <header>
-        <h1>Expensify App</h1>
-        <ul>
-            <li><NavLink to="/dashboard" activeClassName="is-active" > Dashboard </NavLink></li>
-            <li><NavLink to="/create" activeClassName="is-active"> Create expense </NavLink></li> 
-        </ul>
-        <button onClick={ startLogout }> Logout </button> 
+    <header className="header">
+        <div className="content-container">
+            <div className="header__content">
+                <Link className="header__title" to="/dashboard" > 
+                    <h1>Expensify App</h1>
+                </Link>
+                    {/* used this navlink during the beginning of course but not in production  */}
+                    {/* <li><NavLink to="/create" activeClassName="is-active"> Create expense </NavLink></li>  */}
+                <button className="button button--link" onClick={ startLogout }> Logout </button> 
+            </div>
+        </div>
     </header>
 )
 

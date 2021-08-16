@@ -1,14 +1,22 @@
 // rem 
 
+
+// we use this universal setting to make sure the borders width and heights WE SET are calculated correctly accounting for any setting we did NOT SET
+* {
+    box-sizing: border-box;
+}
+
+
+
 html {
     font-size: 62.5%;
 }
 
 body {
-    
+    color: $dark-grey;
     font-family: Helvetica, Arial, sans-serif;
     font-size: $m-size;
-
+    line-height: 1.6;
 
 }
 

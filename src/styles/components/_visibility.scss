@@ -1,0 +1,13 @@
+.show-for-mobile {
+    @media(min-width: $desktop-breakpoint) {
+        display: none;
+    }
+    
+}
+
+.show-for-desktop {
+    // subtracting a small number stops both desktop and mobile from showing at the same time at some random breakpoint
+    @media(max-width: $desktop-breakpoint - .01rem) {
+        display: none;
+    }
+}
